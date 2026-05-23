@@ -8,18 +8,18 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link data-no-optimize="1" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 
   <!-- PDF.js & Tesseract.js CDNs -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
-  <script>
+  <script data-no-optimize="1" data-no-defer="1" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script data-no-optimize="1" data-no-defer="1" src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script data-no-optimize="1" data-no-defer="1">
     if (window.pdfjsLib) {
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     }
   </script>
 
-  <style>
+  <style data-no-optimize="1">
     /* ==========================================================================
        1. DESIGN SYSTEM & CSS VARIABLES
        ========================================================================== */
@@ -58,6 +58,103 @@
         radial-gradient(circle at 10% 20%, rgba(201, 153, 58, 0.03) 0%, transparent 40%),
         radial-gradient(circle at 90% 80%, rgba(201, 153, 58, 0.03) 0%, transparent 40%);
       background-attachment: fixed;
+    }
+
+    /* Isolated self-contained wrapper container for WordPress themes compatibility */
+    .translator-app-wrapper {
+      /* Redefine all local variables to isolate them from theme-level overrides */
+      --bg-color: #0a1628;
+      --card-bg: #112240;
+      --card-bg-hover: #172a45;
+      --accent-gold: #c9993a;
+      --accent-gold-hover: #dfb45b;
+      --accent-gold-glow: rgba(201, 153, 58, 0.3);
+      --text-cream: #f8f5f0;
+      --text-muted: #8892b0;
+      --text-light-muted: #a8b2d1;
+      --border-color: rgba(201, 153, 58, 0.15);
+      --border-color-hover: rgba(201, 153, 58, 0.4);
+
+      background-color: #0a1628 !important;
+      color: #f8f5f0 !important;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      line-height: 1.6 !important;
+      border-radius: 16px !important;
+      border: 1px solid rgba(201, 153, 58, 0.15) !important;
+      padding: 2rem 1.5rem !important;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5) !important;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(201, 153, 58, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(201, 153, 58, 0.03) 0%, transparent 40%) !important;
+      margin: 1.5rem auto !important;
+      max-width: 1200px !important;
+      box-sizing: border-box !important;
+      text-align: left !important;
+    }
+
+    .translator-app-wrapper * {
+      box-sizing: border-box !important;
+    }
+
+    /* Override any WordPress theme typography and text overrides */
+    .translator-app-wrapper h1, 
+    .translator-app-wrapper h2, 
+    .translator-app-wrapper h3, 
+    .translator-app-wrapper p, 
+    .translator-app-wrapper label, 
+    .translator-app-wrapper span, 
+    .translator-app-wrapper button, 
+    .translator-app-wrapper textarea, 
+    .translator-app-wrapper select {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      color: #f8f5f0 !important;
+    }
+
+    .translator-app-wrapper .app-title {
+      font-family: 'Playfair Display', Georgia, serif !important;
+      background: linear-gradient(135deg, #f8f5f0 30%, #c9993a 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+
+    .translator-app-wrapper .app-subtitle {
+      color: #8892b0 !important;
+    }
+
+    /* Extra high specificity selectors to override generic theme inputs rules */
+    body .translator-app-wrapper select, 
+    body .translator-app-wrapper textarea,
+    .translator-app-wrapper select#direction-select,
+    .translator-app-wrapper textarea#translator-input {
+      background-color: #0a1628 !important;
+      color: #f8f5f0 !important;
+      border: 1px solid rgba(201, 153, 58, 0.15) !important;
+    }
+
+    /* Style the placeholder text with high specificity */
+    body .translator-app-wrapper textarea::placeholder,
+    .translator-app-wrapper textarea#translator-input::placeholder {
+      color: #8892b0 !important;
+      opacity: 0.8 !important;
+    }
+
+    /* Style dropdown options explicitly to avoid invisible white-on-white text in Chrome/Safari */
+    body .translator-app-wrapper select option,
+    .translator-app-wrapper select#direction-select option {
+      background-color: #112240 !important;
+      color: #f8f5f0 !important;
+    }
+
+    body .translator-app-wrapper select:focus, 
+    body .translator-app-wrapper textarea:focus,
+    .translator-app-wrapper select#direction-select:focus,
+    .translator-app-wrapper textarea#translator-input:focus {
+      border-color: #c9993a !important;
+      box-shadow: 0 0 10px rgba(201, 153, 58, 0.3) !important;
+    }
+
+    .translator-app-wrapper #translate-btn {
+      color: #0a1628 !important;
     }
 
     /* Custom Scrollbar */
@@ -863,7 +960,8 @@
 </head>
 <body>
 
-  <div class="container">
+  <div class="translator-app-wrapper">
+    <div class="container">
     <!-- Header -->
     <header>
       <div class="crest">
@@ -907,7 +1005,7 @@
         <div>
           <textarea id="translator-input" placeholder="Type text here to translate..."></textarea>
           <div class="input-actions">
-            <div style="display: flex; gap: 8px;">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
               <button id="clear-btn" class="action-btn" title="Clear input text">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>
                 Clear
@@ -917,6 +1015,11 @@
                 Upload File
               </button>
               <input type="file" id="file-loader" accept="image/*,application/pdf" style="display:none">
+              
+              <!-- WordPress Compatible Translate Action Trigger -->
+              <button id="translate-btn" class="action-btn" style="background: linear-gradient(135deg, var(--accent-gold) 0%, #b2832c 100%) !important; color: var(--bg-color) !important; border: none !important; font-weight: bold !important; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25) !important;" title="Translate text now">
+                Translate
+              </button>
             </div>
             <span class="char-count"><span id="char-current">0</span> characters</span>
           </div>
@@ -1086,7 +1189,7 @@
     <div class="tooltip-etymology" id="tooltip-etymology-val">From Proto-Germanic *frijōnds (loving one).</div>
       </div>
 
-  <script>
+  <script data-no-optimize="1" data-no-defer="1">
     /* ==========================================================================
        A. DATASETS
        ========================================================================== */
@@ -2295,8 +2398,21 @@
     /* ==========================================================================
        H. INITIALIZATION
        ========================================================================== */
-    document.addEventListener("DOMContentLoaded", () => {
+    let initRetries = 0;
+    function initTranslator() {
       const inputEl = document.getElementById("translator-input");
+      
+      if (!inputEl) {
+        initRetries++;
+        if (initRetries < 100) { // Retry for up to 5 seconds
+          setTimeout(initTranslator, 50);
+        } else {
+          console.warn("Translator input element not found after 100 retries.");
+        }
+        return;
+      }
+      initRetries = 0; // Reset retries
+
       const directionSelect = document.getElementById("direction-select");
       const charCurrent = document.getElementById("char-current");
       const customAlert = document.getElementById("custom-alert");
@@ -2308,88 +2424,94 @@
       
       // Set initial text value
       const defaultPresets = presets[currentSourceLanguage] || [];
-      if (defaultPresets.length > 0) {
+      if (defaultPresets.length > 0 && inputEl) {
         inputEl.value = defaultPresets[0].input;
-        charCurrent.textContent = defaultPresets[0].input.length.toLocaleString();
+        if (charCurrent) charCurrent.textContent = defaultPresets[0].input.length.toLocaleString();
         performTranslation();
       }
 
       // Input change event
-      inputEl.addEventListener("input", (e) => {
-        let val = e.target.value;
-        charCurrent.textContent = val.length.toLocaleString();
-        customText = val;
-        
-        // Remove active highlights from preset chips
-        document.querySelectorAll(".preset-chip").forEach(el => el.classList.remove("active"));
-        
-        if (val.trim() === "") {
-          isCustomMode = false;
-          customAlert.style.display = "none";
-          // Re-activate first preset chip
-          const firstChip = document.querySelector(".preset-chip");
-          if (firstChip) firstChip.classList.add("active");
-        } else {
-          // Check if it matches any preset exactly
-          const presetsList = presets[currentSourceLanguage] || [];
-          const matched = presetsList.find(p => p.input.toLowerCase().trim() === val.toLowerCase().trim());
+      if (inputEl) {
+        inputEl.addEventListener("input", (e) => {
+          let val = e.target.value;
+          if (charCurrent) charCurrent.textContent = val.length.toLocaleString();
+          customText = val;
           
-          if (matched) {
+          // Remove active highlights from preset chips
+          document.querySelectorAll(".preset-chip").forEach(el => el.classList.remove("active"));
+          
+          if (val.trim() === "") {
             isCustomMode = false;
-            customAlert.style.display = "none";
-            const matchingChip = document.querySelector(`[data-preset-id="${matched.id}"]`);
-            if (matchingChip) matchingChip.classList.add("active");
+            if (customAlert) customAlert.style.display = "none";
+            // Re-activate first preset chip
+            const firstChip = document.querySelector(".preset-chip");
+            if (firstChip) firstChip.classList.add("active");
           } else {
-            isCustomMode = true;
-            customAlert.style.display = "flex";
+            // Check if it matches any preset exactly
+            const presetsList = presets[currentSourceLanguage] || [];
+            const matched = presetsList.find(p => p.input.toLowerCase().trim() === val.toLowerCase().trim());
+            
+            if (matched) {
+              isCustomMode = false;
+              if (customAlert) customAlert.style.display = "none";
+              const matchingChip = document.querySelector(`[data-preset-id="${matched.id}"]`);
+              if (matchingChip) matchingChip.classList.add("active");
+            } else {
+              isCustomMode = true;
+              if (customAlert) customAlert.style.display = "flex";
+            }
           }
-        }
-        performTranslation();
-      });
+          performTranslation();
+        });
+      }
 
       // Direction selector event (now Source Language Selector)
-      directionSelect.addEventListener("change", (e) => {
-        currentSourceLanguage = e.target.value;
-        isCustomMode = false;
-        customAlert.style.display = "none";
-        
-        // Render corresponding chips and tabs
-        renderPresetChips();
-        renderOutputTabs();
-        
-        // Load first preset
-        const currentList = presets[currentSourceLanguage] || [];
-        if (currentList.length > 0) {
-          inputEl.value = currentList[0].input;
-          charCurrent.textContent = currentList[0].input.length.toLocaleString();
-        } else {
-          inputEl.value = "";
-          charCurrent.textContent = "0";
-        }
-        
-        performTranslation();
-      });
+      if (directionSelect) {
+        directionSelect.addEventListener("change", (e) => {
+          currentSourceLanguage = e.target.value;
+          isCustomMode = false;
+          if (customAlert) customAlert.style.display = "none";
+          
+          // Render corresponding chips and tabs
+          renderPresetChips();
+          renderOutputTabs();
+          
+          // Load first preset
+          const currentList = presets[currentSourceLanguage] || [];
+          if (currentList.length > 0) {
+            if (inputEl) inputEl.value = currentList[0].input;
+            if (charCurrent) charCurrent.textContent = currentList[0].input.length.toLocaleString();
+          } else {
+            if (inputEl) inputEl.value = "";
+            if (charCurrent) charCurrent.textContent = "0";
+          }
+          
+          performTranslation();
+        });
+      }
 
       // Clear action
-      clearBtn.addEventListener("click", () => {
-        inputEl.value = "";
-        charCurrent.textContent = "0";
-        customText = "";
-        isCustomMode = false;
-        customAlert.style.display = "none";
-        
-        document.querySelectorAll(".preset-chip").forEach(el => el.classList.remove("active"));
-        const firstChip = document.querySelector(".preset-chip");
-        if (firstChip) {
-          firstChip.classList.add("active");
-          const defaultList = presets[currentSourceLanguage] || [];
-          if (defaultList.length > 0) {
-            inputEl.value = defaultList[0].input;
-            charCurrent.textContent = defaultList[0].input.length.toLocaleString();
+      if (clearBtn) {
+        clearBtn.addEventListener("click", () => {
+          if (inputEl) inputEl.value = "";
+          if (charCurrent) charCurrent.textContent = "0";
+          customText = "";
+          isCustomMode = false;
+          if (customAlert) customAlert.style.display = "none";
+          
+          document.querySelectorAll(".preset-chip").forEach(el => el.classList.remove("active"));
+          const firstChip = document.querySelector(".preset-chip");
+          if (firstChip) {
+            firstChip.classList.add("active");
+            const defaultList = presets[currentSourceLanguage] || [];
+            if (defaultList.length > 0) {
+              if (inputEl) inputEl.value = defaultList[0].input;
+              if (charCurrent) charCurrent.textContent = defaultList[0].input.length.toLocaleString();
+            }
           }
-        }
-        performTranslation();
-      });
+          performTranslation();
+        });
+      }
 
       // File Loader Binding
       const fileLoader = document.getElementById("file-loader");
@@ -2466,57 +2588,90 @@
         });
       }
 
-      // Audio trigger
-      document.getElementById("play-audio-btn").addEventListener("click", () => {
-        const outputEl = document.getElementById("translator-output-container");
-        
-        // Skip speaking if placeholder is showing
-        if (outputEl.querySelector(".placeholder-text")) {
-          return;
-        }
-        
-        const outputText = outputEl.textContent;
-        
-        if (currentSourceLanguage === "modern") {
-          if (activeTab === "old") {
-            let phonetic = translationCache.old.phonetic || generateOldEnglishPhonetic(outputText);
-            speakText(phonetic, 0.75, 0.95);
-          } else if (activeTab === "middle") {
-            let phonetic = translationCache.middle.phonetic || generateMiddleEnglishPhonetic(outputText);
-            speakText(phonetic, 0.75, 0.95);
-          } else if (activeTab === "early") {
-            speakText(outputText, 0.75, 0.95);
-          } else if (activeTab === "late") {
-            speakText(outputText, 0.8, 1.0);
-          }
-        } else {
-          // Source is historical, so output is Modern English
-          speakText(outputText, 0.85, 1.0);
-        }
-      });
+      // Translate button action trigger
+      const translateBtn = document.getElementById("translate-btn");
+      if (translateBtn) {
+        translateBtn.addEventListener("click", () => {
+          performTranslation();
+        });
+      }
 
-      // Drawer trigger
-      document.getElementById("linguistic-drawer-trigger").addEventListener("click", openLinguisticDrawer);
-      document.getElementById("drawer-close-btn").addEventListener("click", closeLinguisticDrawer);
-      document.getElementById("linguistic-drawer-overlay").addEventListener("click", closeLinguisticDrawer);
-      document.getElementById("runic-info-trigger").addEventListener("click", openLinguisticDrawer);
+      // Audio trigger
+      const playAudioBtn = document.getElementById("play-audio-btn");
+      if (playAudioBtn) {
+        playAudioBtn.addEventListener("click", () => {
+          const outputEl = document.getElementById("translator-output-container");
+          if (!outputEl || outputEl.querySelector(".placeholder-text")) {
+            return;
+          }
+          const outputText = outputEl.textContent;
+          if (currentSourceLanguage === "modern") {
+            if (activeTab === "old") {
+              let phonetic = translationCache.old.phonetic || generateOldEnglishPhonetic(outputText);
+              speakText(phonetic, 0.75, 0.95);
+            } else if (activeTab === "middle") {
+              let phonetic = translationCache.middle.phonetic || generateMiddleEnglishPhonetic(outputText);
+              speakText(phonetic, 0.75, 0.95);
+            } else if (activeTab === "early") {
+              speakText(outputText, 0.75, 0.95);
+            } else if (activeTab === "late") {
+              speakText(outputText, 0.8, 1.0);
+            }
+          } else {
+            speakText(outputText, 0.85, 1.0);
+          }
+        });
+      }
+
+      // Drawer trigger bindings with null checks
+      const drawerTrigger = document.getElementById("linguistic-drawer-trigger");
+      if (drawerTrigger) {
+        drawerTrigger.addEventListener("click", openLinguisticDrawer);
+      }
+      
+      const drawerCloseBtn = document.getElementById("drawer-close-btn");
+      if (drawerCloseBtn) {
+        drawerCloseBtn.addEventListener("click", closeLinguisticDrawer);
+      }
+      
+      const drawerOverlay = document.getElementById("linguistic-drawer-overlay");
+      if (drawerOverlay) {
+        drawerOverlay.addEventListener("click", closeLinguisticDrawer);
+      }
+      
+      const runicInfoTrigger = document.getElementById("runic-info-trigger");
+      if (runicInfoTrigger) {
+        runicInfoTrigger.addEventListener("click", openLinguisticDrawer);
+      }
 
       // Drawer Synthesis controls
-      const rateSlider = document.getElementById("synth-rate");
-      const pitchSlider = document.getElementById("synth-pitch");
-      const rateVal = document.getElementById("rate-val");
-      const pitchVal = document.getElementById("pitch-val");
+      if (rateSlider && rateVal) {
+        rateSlider.addEventListener("input", (e) => { rateVal.textContent = e.target.value + "x"; });
+      }
+      if (pitchSlider && pitchVal) {
+        pitchSlider.addEventListener("input", (e) => { pitchVal.textContent = e.target.value + "x"; });
+      }
 
-      rateSlider.addEventListener("input", (e) => { rateVal.textContent = e.target.value + "x"; });
-      pitchSlider.addEventListener("input", (e) => { pitchVal.textContent = e.target.value + "x"; });
+      const drawerSynthPlay = document.getElementById("drawer-synth-play");
+      if (drawerSynthPlay) {
+        drawerSynthPlay.addEventListener("click", () => {
+          const readAloudEl = document.getElementById("drawer-read-aloud");
+          const textToSpeech = readAloudEl ? readAloudEl.textContent : "";
+          const rate = rateSlider ? parseFloat(rateSlider.value) : 0.7;
+          const pitch = pitchSlider ? parseFloat(pitchSlider.value) : 0.9;
+          if (textToSpeech) {
+            speakText(textToSpeech, rate, pitch);
+          }
+        });
+      }
+    }
 
-      document.getElementById("drawer-synth-play").addEventListener("click", () => {
-        const textToSpeech = document.getElementById("drawer-read-aloud").textContent;
-        const rate = parseFloat(rateSlider.value);
-        const pitch = parseFloat(pitchSlider.value);
-        speakText(textToSpeech, rate, pitch);
-      });
-    });
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initTranslator);
+    } else {
+      initTranslator();
+    }
   </script>
+  </div>
 </body>
 </html>
